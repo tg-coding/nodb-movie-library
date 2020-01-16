@@ -2,6 +2,8 @@
   "name": "nodb-project",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3456",
+  "main": "server/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
