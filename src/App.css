@@ -33,6 +33,10 @@ header{
   justify-content: space-between;
 }
 
+.profile-and-search{
+  max-width: 350px;
+}
+
 .profile-container{
   height: 100%;
   max-width: 350px;

@@ -7,11 +7,16 @@ class Movie extends Component {
         this.state = {
             toggleEdit: false,
             descriptionInput: this.props.description,
+            toggleWatched: false
         }
     }
 
     toggleEdit = () =>{
         this.setState({toggleEdit: !this.state.toggleEdit});
+    }
+
+    toggleWatched=() =>{
+        this.setState({toggleWatched: !this.state.toggleWatched});
     }
 
     handleChange = e => {
@@ -48,9 +53,15 @@ class Movie extends Component {
                         value={this.state.descriptionInput}/>
                         <button onClick={() => this.updateDescription()}>Submit</button>
                     </div>
-                )
-                }
+                )}
                 
+                {!this.state.toggleWatched ? (
+                    <p onClick={this.toggleWatched}>&#9711; Not Watched</p>
+                ) : (
+                    <p onClick={this.toggleWatched}>&#9673; Watched</p>
+                )}
+
+
                 <button onClick={this.toggleEdit}>&#9998;</button>
                 <button onClick={() => this.props.deleteMovie(this.props.id)}>&#10005;</button>
              </div>

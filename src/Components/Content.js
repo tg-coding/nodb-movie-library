@@ -3,6 +3,7 @@ import Profile from './Profile';
 import Movie from './Movie';
 import AddMovieBtn from './AddMovieBtn';
 import AddMovieForm from './AddMovieForm';
+import Searchbar from './Searchbar';
 import axios from 'axios';
 // import axios from 'axios';
 
@@ -18,6 +19,7 @@ class Content extends Component{
             rating: "",
             imdbRating:"",
             id: 0,
+            filteredMovies: [],
             toggleAdd: false,
             // toggleEdit: false,
             editId: null
@@ -38,7 +40,14 @@ class Content extends Component{
     // };
 
     componentDidMount(){
-        axios.get('/api/movies').then(result => this.setState({movies: result.data}))
+        axios.get('/api/movies').then(result =>
+            this.setState({
+                movies: result.data,
+                filteredMovies: result.data,
+                selectedTitle: result.data[0].title,
+                selectRating: result.data[0].rating,
+            })
+        )
     };
 
     // editMovie = (id) => {
@@ -72,58 +81,82 @@ class Content extends Component{
         axios.delete(`/api/movie/${id}`).then(res =>{
             this.setState({movies: res.data})
         }).catch(err => console.log(err))
-    }
+    };
+
+    filterMovies = filteredList => {
+        if(filteredList.length){
+            this.setState({
+                filteredMovies: filteredList,
+                selectedTitle: filteredList[0].title,
+                selectedRating: filteredList[0].rating
+            });
+        }else{
+            this.setState({
+                filteredMovies: filteredList,
+                selectTitle: "",
+                selectRating: ""
+            });
+        }
+    };
+
+
 
 
     
     render(){
-        return(
-            <div className="content-container">
-                <Profile />
-                <div className="movies-container">
-                    {this.state.movies.map((element) => {
-                        return (
-                            <Movie
-                                key={element.id}
-                                id={element.id}
-                                title={element.title}
-                                img={element.img}
-                                description={element.description}
-                                rating={element.rating}
-                                imdbRating={element.imdbRating}
-                                deleteMovie={this.deleteMovie}
-                                editMovie={this.editMovie}
-                            />
-                        )
-                    })}
-
-                    {!this.state.toggleAdd ? (
-                        <AddMovieBtn 
-                            toggleAdd={this.toggleAdd}
+        const {movies, filteredMovies, selectedTitle, selectedRating} = this.state;
+        if(movies.length){
+            return(
+                <div className="content-container">
+                    <div className="profile-and-search">
+                        <Profile />
+                        <Searchbar 
+                            movies={movies}
+                            filterMovies={this.filterMovies}
                         />
-                    ) : (
-                        <div>
-                            <AddMovieForm 
-                                title={this.state.title}
-                                img={this.state.img}
-                                description={this.state.description}
-                                rating={this.state.rating}
-                                imdbRating={this.state.imdbRating}
-                                addMovie={this.addMovie}
-                                handleChange={this.handleChange}
+                    </div>
+                    <div className="movies-container">
+                        {this.state.filteredMovies.map((element) => {
+                            return (
+                                <Movie
+                                    key={element.id}
+                                    id={element.id}
+                                    title={element.title}
+                                    img={element.img}
+                                    description={element.description}
+                                    rating={element.rating}
+                                    imdbRating={element.imdbRating}
+                                    deleteMovie={this.deleteMovie}
+                                    editMovie={this.editMovie}
+                                    filteredMovies={filteredMovies}
+                                />
+                            )
+                        })}
+
+                        {!this.state.toggleAdd ? (
+                            <AddMovieBtn 
                                 toggleAdd={this.toggleAdd}
                             />
-                        </div>
-                    )}
-
-                    
-
+                        ) : (
+                            <div>
+                                <AddMovieForm 
+                                    title={this.state.title}
+                                    img={this.state.img}
+                                    description={this.state.description}
+                                    rating={this.state.rating}
+                                    imdbRating={this.state.imdbRating}
+                                    addMovie={this.addMovie}
+                                    handleChange={this.handleChange}
+                                    toggleAdd={this.toggleAdd}
+                                />
+                            </div>
+                        )}
+                    </div>
                 </div>
-               
-                
-
-            </div>
-        )
+            )
+        } else {
+            return <div></div>
+        }
     }
 }
 
