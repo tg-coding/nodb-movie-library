@@ -18,16 +18,11 @@ class Content extends Component{
             rating: "",
             imdbRating:"",
             id: 0,
-            toggleEdit: false,
             toggleAdd: false,
+            // toggleEdit: false,
             editId: null
         }
     }
-
-    componentDidMount(){
-        axios.get('/api/movies').then(result => this.setState({movies: result.data}))
-    };
-    
 
     handleChange = e => {
         let {value, name} = e.target;
@@ -38,11 +33,26 @@ class Content extends Component{
         this.setState({toggleAdd: !this.state.toggleAdd})
     };
 
-    // addMovie(body){
-    //     axios.post('/api/movie', body).then(res => {
-    //         this.setState({movies: res.data});
-    //     }).catch(err => console.log(err));
+    // toggleEdit = () => {
+    //     this.setState({toggleEdit: !this.state.toggleEdit})
+    // };
+
+    componentDidMount(){
+        axios.get('/api/movies').then(result => this.setState({movies: result.data}))
+    };
+
+    // editMovie = (id) => {
+    //     axios.put(`/api/movie/${id}`).then(res => {
+    //         this.setState({movies: res.data})
+    //     }).catch(err => console.log(err))
+    //     // this.toggleEdit()
     // }
+
+    editMovie = (id, description) => {
+        axios.put(`/api/movie/${id}`, {description}).then(res => {
+            this.setState({movies: res.data})
+        }).catch(err => console.log(err))
+    }
 
     addMovie = () => {
         const {title, img, description, rating, imdbRating} = this.state;
@@ -82,6 +92,7 @@ class Content extends Component{
                                 rating={element.rating}
                                 imdbRating={element.imdbRating}
                                 deleteMovie={this.deleteMovie}
+                                editMovie={this.editMovie}
                             />
                         )
                     })}

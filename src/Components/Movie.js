@@ -6,15 +6,29 @@ class Movie extends Component {
         super(props);
         this.state = {
             toggleEdit: false,
+            descriptionInput: this.props.description,
         }
     }
 
     toggleEdit = () =>{
-        this.setState({toggleView: !this.state.toggleView});
+        this.setState({toggleEdit: !this.state.toggleEdit});
+    }
+
+    handleChange = e => {
+        let {value, name} = e.target;
+        this.setState({[name]: value});
+    };
+
+    updateDescription = () => {
+        console.log(this.props.id, this.state.descriptionInput)
+        this.props.editMovie(this.props.id, this.state.descriptionInput)
+        this.toggleEdit();
     }
 
     render(){
+
         return(
+
             <div className="movie">
                 <img src={this.props.img} alt={this.props.title} id="movie-poster" />
                 <h5>{this.props.title}</h5>
@@ -22,8 +36,22 @@ class Movie extends Component {
                     <h6>{this.props.rating}</h6>
                     <h6>{this.props.imdbRating}<strong id="imdbRating10">/10</strong></h6>
                 </div>
-                <p>{this.props.description}</p>
-                <button onClick={() => this.props.toggleEdit(this.props.id)}>&#9998;</button>
+                {!this.state.toggleEdit ? (
+                    <p>{this.props.description}</p>
+                ) : (
+                    <div>
+                        <textarea
+                        className="movie-form-input"
+                        name="descriptionInput"
+                        placeholder="Description"
+                        onChange={e => this.handleChange(e)}
+                        value={this.state.descriptionInput}/>
+                        <button onClick={() => this.updateDescription()}>Submit</button>
+                    </div>
+                )
+                }
+                
+                <button onClick={this.toggleEdit}>&#9998;</button>
                 <button onClick={() => this.props.deleteMovie(this.props.id)}>&#10005;</button>
              </div>
         )

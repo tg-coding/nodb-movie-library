@@ -101,9 +101,10 @@ module.exports = {
         res.status(200).send(movies) 
     },
     editMovie(req, res){
+        const{description} = req.body 
         const{id} = req.params
         const index = movies.findIndex(element => element.id === +id)
-        movies[index] = {id, ...req.body}
+        movies[index] = {...movies[index], description}
         res.status(200).send(movies)
     },
     deleteMovie(req, res){
