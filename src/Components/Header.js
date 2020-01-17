@@ -1,7 +1,7 @@
-import React from 'React'
+import React from 'react';
 
-function Header (){
-    return(
+function Header() {
+    return (
         <header>
             <div className="header-contents">
                 <img id="logo" src="" />
@@ -9,11 +9,11 @@ function Header (){
                 <nav>
                     <a>Home</a>
                     <a>Movies</a>
-                    <a>Sign In</a>
+                    <a>Logout</a>
                 </nav>
             </div>
         </header>
-    )
+    );
 }
 
 export default Header

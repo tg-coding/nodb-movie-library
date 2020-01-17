@@ -7,10 +7,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Content/>
+      <Header />
+      <Content />
     </div>
-  );
+  )
 }
 
 export default App;
