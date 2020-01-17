@@ -4,7 +4,7 @@ function Profile (){
     return(
         <div className="profile-container">
             <img src="" />
-            <h3 id="profile-name">Ron Swason</h3>
+            <h3 id="profile-name">Ann Perkins</h3>
             <h4 ide="recently-watch">Movies Recently Watched</h4>
             <ul>
                 <li>Gladiator</li>

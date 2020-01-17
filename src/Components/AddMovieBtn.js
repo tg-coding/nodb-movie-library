@@ -1,11 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class AddMovieBtn extends Component{
-    render(){
+function AddMovieBtn (props){
         return(
-            <div>AddMovieBtn</div>
+            <button onClick={props.toggleAdd}>&#10010;</button>
         )
-    }
 }
 
 export default AddMovieBtn

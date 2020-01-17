@@ -4,8 +4,8 @@ function Header() {
     return (
         <header>
             <div className="header-contents">
-                <img id="logo" src="" />
-                <input placeholder="search" />
+                <img id="logo" src="" alt=""/>
+                <input id="search" placeholder="search" />
                 <nav>
                     <a>Home</a>
                     <a>Movies</a>

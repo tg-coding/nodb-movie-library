@@ -48,14 +48,6 @@ let movies = [{
 },
 {
     "id": 6,
-    "title": "Corpse Bride",
-    "img": "https://m.media-amazon.com/images/M/MV5BMTk1MTY1NjU4MF5BMl5BanBnXkFtZTcwNjIzMTEzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-    "description": "When a shy groom practices his wedding vows in the inadvertent presence of a deceased young woman, she rises from the grave assuming he has married her.",
-    "rating": "PG",
-    "imdbRating": "7.3"
-},
-{
-    "id": 7,
     "title": "Sherlock Holmes",
     "img": "https://m.media-amazon.com/images/M/MV5BMTg0NjEwNjUxM15BMl5BanBnXkFtZTcwMzk0MjQ5Mg@@._V1_UX182_CR0,0,182,268_AL_.jpg",
     "description": "Detective Sherlock Holmes and his stalwart partner Watson engage in a battle of wits and brawn with a nemesis whose plot is a threat to all of England.",
@@ -63,7 +55,7 @@ let movies = [{
     "imdbRating": "7.6"
 },
 {
-    "id": 8,
+    "id": 7,
     "title": "Harry Potter and the Sorcerer's Stone",
     "img": "https://m.media-amazon.com/images/M/MV5BNjQ3NWNlNmQtMTE5ZS00MDdmLTlkZjUtZTBlM2UxMGFiMTU3XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_UX182_CR0,0,182,268_AL_.jpg",
     "description": "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.",
@@ -71,7 +63,7 @@ let movies = [{
     "imdbRating": "7.6"
 },
 {
-    "id": 9,
+    "id": 8,
     "title": "The Fast and the Furious",
     "img": "https://m.media-amazon.com/images/M/MV5BNzlkNzVjMDMtOTdhZC00MGE1LTkxODctMzFmMjkwZmMxZjFhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
     "description": "Los Angeles police officer Brian O'Conner must decide where his loyalty really lies when he becomes enamored with the street racing world he has been sent undercover to destroy.",
@@ -79,7 +71,7 @@ let movies = [{
     "imdbRating": "6.8"
 },
 {
-    "id": 10,
+    "id": 9,
     "title": "Signs",
     "img": "https://m.media-amazon.com/images/M/MV5BNDUwMDUyMDAyNF5BMl5BanBnXkFtZTYwMDQ3NzM3._V1_UX182_CR0,0,182,268_AL_.jpg",
     "description": "A family living on a farm finds mysterious crop circles in their fields which suggests something more frightening to come.",
@@ -87,7 +79,7 @@ let movies = [{
     "imdbRating": "6.7"
 },
 {
-    "id": 11,
+    "id": 10,
     "title": "The Bourne Identity",
     "img": "https://m.media-amazon.com/images/M/MV5BM2JkNGU0ZGMtZjVjNS00NjgyLWEyOWYtZmRmZGQyN2IxZjA2XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UX182_CR0,0,182,268_AL_.jpg",
     "description": "A man is picked up by a fishing boat, bullet-riddled and suffering from amnesia, before racing to elude assassins and attempting to regain his memory.",
@@ -99,6 +91,7 @@ let id = 12
 
 module.exports = {
     getMovies(req, res){
+        console.log('req.body', req.body)
         res.status(200).send(movies)
     },
     addMovie(req, res){
@@ -109,9 +102,14 @@ module.exports = {
     },
     editMovie(req, res){
         const{id} = req.params
-        const editIndex = movies.findIndex(element => {
-            return +id === element.id})
-        movies[editIndex] = {id, ...req.body}
+        const index = movies.findIndex(element => element.id === +id)
+        movies[index] = {id, ...req.body}
         res.status(200).send(movies)
+    },
+    deleteMovie(req, res){
+        const {id} = req.params;
+        const index = movies.findIndex(element => element.id === +id);
+        movies.splice(index, 1);
+        res.status(200).send(movies);
     }
 }

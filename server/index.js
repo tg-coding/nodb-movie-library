@@ -8,7 +8,7 @@ app.use(express.json());
 app.get('/api/movies', ctrl.getMovies);
 app.post('/api/movie', ctrl.addMovie);
 app.put('/api/movie/:id', ctrl.editMovie);
-
+app.delete('/api/movie/:id', ctrl.deleteMovie);
 
 const port = 3456;
 app.listen(port, () => console.log(`Movies playing on ${port}`));
