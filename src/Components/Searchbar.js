@@ -28,13 +28,15 @@ class Searchbar extends Component{
 
     render(){
         return(
-            <div>
-                <select value={this.state.filterKey} onChange={this.selectFilterKey} name='filterKey'>
-                    <option value=''>Select</option>
-                    <option value='title'>Movie Title</option>
-                    <option value='rating'>Rating</option>
-                </select>
-                <input name='searchInput' value={this.state.searchInput} onChange={e=>this.filterMovieList(e)}/>
+            <div className="searchbar-container">
+                <div className="searchbar">
+                    <select value={this.state.filterKey} onChange={this.selectFilterKey} name='filterKey' className="search-select">
+                        <option value=''>Select</option>
+                        <option value='title'>Movie Title</option>
+                        <option value='rating'>Rating</option>
+                    </select>
+                    <input name='searchInput' value={this.state.searchInput} onChange={e=>this.filterMovieList(e)}  placeholder=" Search" id="search-input"/>
+                </div>
             </div>
         )
     }

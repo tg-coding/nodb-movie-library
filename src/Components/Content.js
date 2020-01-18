@@ -104,7 +104,7 @@ class Content extends Component{
 
     
     render(){
-        const {movies, filteredMovies, selectedTitle, selectedRating} = this.state;
+        const {movies, filteredMovies,} = this.state;
         if(movies.length){
             return(
                 <div className="content-container">

@@ -3,9 +3,12 @@ import React from 'react';
 function Profile (){
     return(
         <div className="profile-container">
-            <img src="" />
+            <div id="profile-pic" alt="profile-pic">
+                <div id="profile-pic-edit">Edit <strong>&#9998;</strong></div>
+            </div>
             <h3 id="profile-name">Ann Perkins</h3>
-            <h4 ide="recently-watch">Movies Recently Watched</h4>
+            <hr/>
+            <h4 ide="recently-watch">Recently Watched</h4>
             <ul>
                 <li>Gladiator</li>
                 <li>The Fast and the Furious</li>
@@ -17,7 +20,7 @@ function Profile (){
                 <li>Sherlock Holmes</li>
                 <li>Signs</li>
             </ul>
-            <button>Switch User</button>
+            <button id="switch-user-btn">Switch User</button>
         </div>
     )
 }

@@ -6,6 +6,7 @@ function AddMovieForm (props){
             <div className="movie-form-container">
                 <input
                     className="movie-form-input"
+                    id="img-input"
                     name="img"
                     placeholder="Image URL"
                     onChange={e => props.handleChange(e)}
@@ -34,6 +35,7 @@ function AddMovieForm (props){
                 />
                 <textarea
                     className="movie-form-input"
+                    id="description-input"
                     name="description"
                     placeholder="Description"
                     onChange={e => props.handleChange(e)}
