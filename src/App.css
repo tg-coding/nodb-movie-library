@@ -258,17 +258,33 @@ h6{
   margin-top: -22px;
 }
 
+.watched-edit-container{
+  /* margin-top: -10px; */
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
 .toggle-watched{
   font-size: 12px;
   font-weight: bold;
+  height: 30px;
+  color: white;
+  background-color: #212931;
+  border: none;
+  border-radius:8px;
 }
 
 #edit-btn{
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 900;
+  height: 30px;
+  width: 30px;
   color: #212931;
   background-color: rgb(254, 203, 1);
   border: none;
+  border-radius:8px;
 }
 
 #delete-btn{
@@ -288,7 +304,7 @@ h6{
   top: 0;
   right: 0;
   z-index: 15;
-
+  border-radius:  0 0 0 8px;
 }
 
 

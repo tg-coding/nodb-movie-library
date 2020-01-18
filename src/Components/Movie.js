@@ -59,14 +59,16 @@ class Movie extends Component {
                     </div>
                 )}
                 
-                <div className="">
-                    {!this.state.toggleWatched ? (
-                        <p onClick={this.toggleWatched} className="toggle-watched">&#9711; Not Watched</p>
-                    ) : (
-                        <p onClick={this.toggleWatched} className="toggle-watched">&#9673; Watched</p>
-                    )}
-
+                <div className="watched-edit-container">
+                    
                     <button onClick={this.toggleEdit} id="edit-btn">&#9998;</button>
+                    
+                    {!this.state.toggleWatched ? (
+                        <button onClick={this.toggleWatched} className="toggle-watched">Not Watched &#9711;</button>
+                    ) : (
+                        <button onClick={this.toggleWatched} className="toggle-watched">Watched &#9673;</button>
+                    )}
+                    
                 </div>
 
                 <button onClick={() => this.props.deleteMovie(this.props.id)} id="delete-btn">&#10005;</button>
