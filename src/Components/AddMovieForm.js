@@ -41,8 +41,12 @@ function AddMovieForm (props){
                     onChange={e => props.handleChange(e)}
                     value={props.description}
                 />
-                <button onClick={() => props.addMovie()}>&#10004;</button>
-                <button onClick={props.toggleAdd}>&#10005;</button>
+                <div className="hvr-icon-rotate">    
+                    <button onClick={() => props.addMovie()} id="submit-add-btn" className="hvr-icon">&#10004;</button>
+                </div>
+                <div className="hvr-icon-rotate">
+                    <button onClick={props.toggleAdd} id="cancel-add-btn" className="hvr-icon">&#10005;</button>
+                </div>
             </div>
         )
 }

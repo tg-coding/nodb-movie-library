@@ -51,11 +51,13 @@ class Movie extends Component {
                     <div>
                         <textarea
                         className="movie-form-input"
+                        id="edit-description"
                         name="descriptionInput"
                         placeholder="Description"
                         onChange={e => this.handleInputChange(e)}
                         value={this.state.descriptionInput}/>
-                        <button onClick={() => this.updateDescription()}>Submit</button>
+                        
+                        <button onClick={() => this.updateDescription()} id="submit-edit-btn">&#10004;</button>
                     </div>
                 )}
                 
