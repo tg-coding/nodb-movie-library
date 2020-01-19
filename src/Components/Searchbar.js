@@ -35,7 +35,7 @@ class Searchbar extends Component{
                         <option value='title'>Movie Title</option>
                         <option value='rating'>Rating</option>
                     </select>
-                    <input name='searchInput' value={this.state.searchInput} onChange={e=>this.filterMovieList(e)}  placeholder=" Search" id="search-input"/>
+                    <input name='searchInput' value={this.state.searchInput} onChange={e=>this.filterMovieList(e)}  placeholder="Search" id="search-input"/>
                 </div>
             </div>
         )

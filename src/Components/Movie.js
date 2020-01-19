@@ -19,7 +19,7 @@ class Movie extends Component {
         this.setState({toggleWatched: !this.state.toggleWatched});
     }
 
-    handleChange = e => {
+    handleInputChange = e => {
         let {value, name} = e.target;
         this.setState({[name]: value});
     };
@@ -53,7 +53,7 @@ class Movie extends Component {
                         className="movie-form-input"
                         name="descriptionInput"
                         placeholder="Description"
-                        onChange={e => this.handleChange(e)}
+                        onChange={e => this.handleInputChange(e)}
                         value={this.state.descriptionInput}/>
                         <button onClick={() => this.updateDescription()}>Submit</button>
                     </div>
@@ -72,6 +72,7 @@ class Movie extends Component {
                 </div>
 
                 <button onClick={() => this.props.deleteMovie(this.props.id)} id="delete-btn">&#10005;</button>
+
              </div>
         )
     }

@@ -87,7 +87,7 @@ let movies = [{
     "imdbRating": "7.9"
 }]
 
-let id = 12
+let id = 11
 
 module.exports = {
     getMovies(req, res){

@@ -35,33 +35,41 @@ class Content extends Component{
         this.setState({toggleAdd: !this.state.toggleAdd})
     };
 
-    // toggleEdit = () => {
-    //     this.setState({toggleEdit: !this.state.toggleEdit})
-    // };
-
-    componentDidMount(){
-        axios.get('/api/movies').then(result =>
+    componentDidMount = () => {
+        axios.get('/api/movies').then(res =>{
             this.setState({
-                movies: result.data,
-                filteredMovies: result.data,
-                selectedTitle: result.data[0].title,
-                selectRating: result.data[0].rating,
-            })
-        )
+                movies: res.data,
+                filteredMovies: res.data,
+                selectedTitle: res.data[0].title,
+                selectRating: res.data[0].rating})
+        }).catch(err => console.log(err))
     };
-
-    // editMovie = (id) => {
-    //     axios.put(`/api/movie/${id}`).then(res => {
-    //         this.setState({movies: res.data})
-    //     }).catch(err => console.log(err))
-    //     // this.toggleEdit()
-    // }
 
     editMovie = (id, description) => {
         axios.put(`/api/movie/${id}`, {description}).then(res => {
-            this.setState({movies: res.data})
+            this.setState({
+                movies: res.data,
+                filteredMovies: res.data,})
         }).catch(err => console.log(err))
-    }
+    };
+
+
+    // editEmployee = updatedEmployee => {
+	// 	axios
+	// 		.put(`/api/employees/${updatedEmployee.id}`, updatedEmployee)
+	// 		.then(res => {
+	// 			this.setState({
+	// 				employees: res.data,
+	// 				filteredEmployees: res.data,
+	// 				selectedFirstName: res.data[0].firstName,
+	// 				selectedLastName: res.data[0].lastName,
+	// 				selectedId: res.data[0].id,
+	// 				selectedEmail: res.data[0].email,
+	// 				selectedGender: res.data[0].gender
+	// 			});
+	// 		});
+	// };
+
 
     addMovie = () => {
         const {title, img, description, rating, imdbRating} = this.state;
@@ -72,16 +80,20 @@ class Content extends Component{
                 description: "",
                 rating: "",
                 imdbRating:"",
-                movies: res.data})
+                movies: res.data,
+                filteredMovies: res.data})
         });
         this.toggleAdd()
     };
 
     deleteMovie = (id) => {
         axios.delete(`/api/movie/${id}`).then(res =>{
-            this.setState({movies: res.data})
+            this.setState({
+                movies: res.data,
+                filteredMovies: res.data,})
         }).catch(err => console.log(err))
     };
+
 
     filterMovies = filteredList => {
         if(filteredList.length){
@@ -105,7 +117,7 @@ class Content extends Component{
     
     render(){
         const {movies, filteredMovies,} = this.state;
-        if(movies.length){
+        // if(movies.length){
             return(
                 <div className="content-container">
                     <div className="profile-and-search">
@@ -138,7 +150,7 @@ class Content extends Component{
                                 toggleAdd={this.toggleAdd}
                             />
                         ) : (
-                            <div>
+                            <div className="add-movie-form">
                                 <AddMovieForm 
                                     title={this.state.title}
                                     img={this.state.img}
@@ -154,9 +166,9 @@ class Content extends Component{
                     </div>
                 </div>
             )
-        } else {
-            return <div></div>
-        }
+        // } else {
+        //     return <div></div>
+        // }
     }
 }
 
