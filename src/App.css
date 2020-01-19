@@ -439,3 +439,26 @@ h6{
   -webkit-transform: rotate(8deg);
   transform: rotate(8deg);
 }
+
+.watched-edit-container {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+}
+.watched-edit-container .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.watched-edit-container:hover .hvr-icon, .watched-edit-container:focus .hvr-icon, .watched-edit-container:active .hvr-icon {
+  -webkit-transform: rotate(8deg);
+  transform: rotate(8deg);
+}
