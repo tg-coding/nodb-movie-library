@@ -21,7 +21,7 @@ class Searchbar extends Component{
             return this.setState({searchInput: ''})
         }
         this.setState({searchInput: value}, ()=>{
-            const searched = this.props.movies.filter(movie => movie[this.state.filterKey].includes(this.state.searchInput))
+            const searched = this.props.movies.filter(movie => movie[this.state.filterKey].toUpperCase().includes(this.state.searchInput.toUpperCase()))
             this.props.filterMovies(searched)
         })
     }
