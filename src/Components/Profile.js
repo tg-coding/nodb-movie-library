@@ -8,8 +8,8 @@ function Profile (){
             </div>
             <h3 id="profile-name">Ann Perkins</h3>
             <hr/>
-            <h4 ide="recently-watch">Recently Watched</h4>
-            <ul>
+            <h4 id="recently-watched">Recently Watched</h4>
+            <ul className="recently-watched-list">
                 <li>Gladiator</li>
                 <li>The Fast and the Furious</li>
                 <li>Corpse Bride</li>

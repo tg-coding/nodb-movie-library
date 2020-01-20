@@ -23,7 +23,7 @@ header{
 
 .header-contents{
   height: 75px;
-  max-width: 1074px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,13 +32,59 @@ header{
   margin: 0 auto;
 }
 
+#logo{
+  height: 35px;
+}
+#desktop-nav{
+  display: flex;
+  justify-content: space-between;
+}
+
 .nav-links{
   font-size: 14px;
   padding-left: 30px;
 }
 
-#logo{
-  height: 35px;
+#mobile-nav{
+  display: none;
+  height: 25px;
+  width: 70px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #212931;
+  background-color: #FECA01;
+  border: none;
+  border-radius: 6px;
+}
+
+.dropdown-container{
+  height: auto;
+  position: fixed;
+  left: 0;
+  top: 55px;
+  padding: 10px 18px;
+  background-color: #212931ec;
+  animation: open 500ms;
+  overflow: hidden;
+  z-index: 15;
+}
+
+#dropdown-nav{
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  line-height: 40px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes open {
+  from{
+    height: 0px;
+  }
+  to{
+   height: 100px;
+  }
 }
 
 /****** Content Container ******/
@@ -155,16 +201,6 @@ li:before {
   padding: 0;
 }
 
-/* select{
-  -webkit-appearance: none;
-  border-radius: 11px 0 0 11px;
-  height: 22px;
-  width: 88px;
-  background-color: blue;
-  border: none;
-  padding: 0 10px;
-} */
-
 select {
   /* styling */
   content: "\25BC";
@@ -213,7 +249,6 @@ select.search-select {
   border: none;
   border-radius: 0 18px 18px 0;
   padding-left: 10px;
-
 }
 
 
@@ -266,12 +301,30 @@ h6{
   margin-top: -22px;
 }
 
-.watched-edit-container{
-  /* margin-top: -10px; */
+.watched-edit-container {
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+}
+.watched-edit-container .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.watched-edit-container:hover .hvr-icon, .watched-edit-container:focus .hvr-icon, .watched-edit-container:active .hvr-icon {
+  -webkit-transform: rotate(8deg);
+  transform: rotate(8deg);
 }
 
 .toggle-watched{
@@ -325,7 +378,7 @@ h6{
 #submit-edit-btn{
   font-size: 20px;
   /* font-weight: 700; */
-  height: 25px;
+  height: 30px;
   width: 162px;
   color: #212931;
   background-color: rgb(254, 203, 1);
@@ -440,25 +493,569 @@ h6{
   transform: rotate(8deg);
 }
 
-.watched-edit-container {
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  -webkit-transition-duration: 0.15s;
-  transition-duration: 0.15s;
+
+
+
+
+/****** Responsive ******/
+@media(max-width: 600px){
+
+  .header-contents{
+    height: 55px;
+    max-width: 480px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 40px;
+    margin: 0 ;
+  }
+
+  #logo{
+    height: 25px;
+  }
+
+  #desktop-nav{
+    display: none;
+  }
+
+  #mobile-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .dropdown-container{
+    width: 100%;
+  }
+
+  #dropdown-nav{
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* .nav-links{
+    font-size: 14px;
+    padding-left: 30px;
+  } */
+
+
+  .content-container{
+    max-width: 480px;
+    min-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-and-search{
+    max-width: 480px;
+    min-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  .profile-container{
+    height: 60px;
+    max-width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 40px;
+  }
+  
+  #profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: -20px;
+    /* margin: auto; */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #profile-pic-edit{
+    display: none;
+  }
+  
+  #profile-name{
+    font-size: 17px;
+  }
+  
+  hr{
+    display: none;
+  }
+  
+  #recently-watched{
+    display: none;
+  }
+
+  .recently-watched-list{
+    display: none;
+  }
+
+  
+  #switch-user-btn{
+    margin: 0;
+    font-weight: bold;
+    color: #212931;
+    border: none;
+    border-radius: 10px;
+    background-color: #FECA01;
+  }
+  
+  .searchbar-container{
+    height: auto;
+    background-color: rgb(0, 0, 0, 40%);
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchbar{
+    width:auto;
+    height:22px;
+    margin:auto;
+  }
+
+  .movies-container{
+    height: auto;
+    max-width: 420px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+
+  .movie{
+    width: 120px;
+    margin: 20px 10px;
+    position: relative;
+  }
+
+  #movie-poster{
+    width: 120px;
+  }
+
+  .movie-title{
+    font-size: 14px;
+  }
+
+  #description{
+    display: none;
+  }
+
+  #edit-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
+
+  .toggle-watched{
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 8px;
+    height: 22px;
+    color: white;
+    background-color: #212931;
+    border: none;
+    border-radius:4px;
+  }
+
+  #edit-description{
+    margin-top: -15px;
+    height: 60px;
+    width: 110px;
+  }
+  
+  #submit-edit-btn{
+    font-size: 14px;
+    /* font-weight: 700; */
+    height: 20px;
+    width: 120px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .add-movie-btn{
+    width: 120px;
+    height: 120px;
+    margin: auto 10px;
+  }
+
+  .movie-form-container{
+    width: 120px;
+    height: auto;
+    margin: 20px 10px;
+    display: block;
+  }
+
+  .movie-form-input{
+    width: 120px;
+    height: 20px;
+    border: none;
+    margin-bottom: 10px;
+    padding: 5px 0 5px 10px;
+  }
+  
+  #img-input{
+    border-radius: 10px 10px 0 0;
+  }
+  
+  #description-input{
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    /* padding: 4px; */
+  }
+  
+  #submit-add-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
+  
+  #cancel-add-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
 }
-.watched-edit-container .hvr-icon {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-transition-duration: 0.15s;
-  transition-duration: 0.15s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
+
+
+@media(min-width:600px){
+  #desktop-nav{
+    display: none;
+  }
+
+  #mobile-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .dropdown-container{
+    width: 100%;
+  }
+
+  #dropdown-nav{
+    max-width: 500px;
+  }
+  
+  .profile-and-search{
+    width: 230px;
+  }
+  
+  .profile-container{
+    padding: 20px 25px;
+  }
+  
+  #profile-pic{
+    width: 120px;
+    height: 120px;
+    background-position: -50px;
+  }
+  
+  #profile-pic-edit{
+    width: 120px;
+  }
+  
+  .searchbar-container{
+    padding: 20px 15px;
+  }
+  
+  .searchbar{
+    width: auto;
+    margin: 0 auto;
+  }
+
+  #search-input{
+    width: 67px;
+  }
+
+  .movies-container{
+    height: auto;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 27px;
+  }
+
+  .movie{
+    width: 120px;
+    margin: 20px 10px;
+    position: relative;
+  }
+
+  #movie-poster{
+    width: 120px;
+  }
+
+  .movie-title{
+    font-size: 14px;
+  }
+
+  #edit-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
+
+  .toggle-watched{
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 8px;
+    height: 22px;
+    color: white;
+    background-color: #212931;
+    border: none;
+    border-radius:4px;
+  }
+
+  .add-movie-btn{
+    width: 120px;
+    height: 120px;
+    margin: auto 10px;
+  }
+
+  .movie-form-container{
+    width: 120px;
+    height: auto;
+    margin: 20px 10px;
+    display: block;
+  }
+
+  .movie-form-input{
+    width: 120px;
+    height: 20px;
+    border: none;
+    margin-bottom: 10px;
+    padding: 5px 0 5px 10px;
+  }
+  
+  #img-input{
+    border-radius: 10px 10px 0 0;
+  }
+  
+  #description-input{
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    /* padding: 4px; */
+  }
+  
+  #submit-add-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
+  
+  #cancel-add-btn{
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    padding: 0;
+  }
+
+  #edit-description{
+    margin-top: -15px;
+    height: 100px;
+    width: 110px;
+  }
+  
+  #submit-edit-btn{
+    font-size: 14px;
+    /* font-weight: 700; */
+    height: 20px;
+    width: 120px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  
 }
-.watched-edit-container:hover .hvr-icon, .watched-edit-container:focus .hvr-icon, .watched-edit-container:active .hvr-icon {
-  -webkit-transform: rotate(8deg);
-  transform: rotate(8deg);
+
+@media(min-width: 768px){
+  #desktop-nav{
+    display: initial;
+  }
+
+  #mobile-nav{
+    display: none;
+  }
+  
+  .profile-and-search{
+    width: 250px;
+    margin: 0 37px;
+  }
+  
+  .profile-container{
+    height: auto;
+    padding: 37px 37px 22px 37px;
+  }
+  
+  #profile-pic{
+    width: 170px;
+    height: 170px;
+    background-position: -60px;
+  }
+  
+  #profile-pic-edit{
+    width: 170px;
+    height: 20px;
+    font-size: 12px;
+  }
+  
+  .searchbar-container{
+    height: auto;
+    background-color: rgb(0, 0, 0, 40%);
+    padding: 22px 37px 22px 37px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .searchbar{
+    width:100%;
+    height:22px;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  #search-input{
+    width: calc(100% - 103px);
+  }
+
+  .movies-container{
+    height: auto;
+    max-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .movie{
+    width: 150px;
+    margin: 37px 0;
+    position: relative;
+  }
+  
+  #movie-poster{
+    width: 150px;
+    z-index: 1;
+  }
+  
+  .movie-title{
+    font-size: 16px;
+  }
+
+  #edit-btn{
+    font-size: 20px;
+    font-weight: 900;
+    height: 30px;
+    width: 30px;
+    border-radius:8px;
+  }
+
+  .toggle-watched{
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0 10px;
+    height: 30px;
+    border-radius:8px;
+  }
+
+  .add-movie-btn{
+    width: 150px;
+    height: 150px;
+    font-size: 85px;
+  }
+
+  .movie-form-container{
+    width: 140px;
+    height: auto;
+    margin: 37px;
+  }
+
+  .movie-form-input{
+    width: 140px;
+  }
+
+  #submit-add-btn{
+    font-size: 20px;
+    /* font-weight: 700; */
+    height: 30px;
+    width: 30px;
+    border-radius:8px;
+  }
+  
+  #cancel-add-btn{
+    font-size: 20px;
+    font-weight: 900;
+    height: 30px;
+    width: 30px;
+    margin-left: 12px;
+    border-radius:8px;
+  }
+
+  #edit-description{
+    margin-top: -15px;
+    height: 60px;
+    width: 140px;
+  }
+  
+  #submit-edit-btn{
+    font-size: 20px;
+    /* font-weight: 700; */
+    height: 30px;
+    width: 150px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}
+
+@media(min-width: 900px){
+  .header-contents{
+    max-width: 1074px;
+  }
+
+  .movies-container{
+    height: auto;
+    max-width: 800px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .movie{
+    width: 162px;
+    margin: 37px;
+    position: relative;
+  }
+
+  #movie-poster{
+    width: 162px;
+    z-index: 1;
+  }
+
+  .add-movie-btn{
+    width: 162px;
+    height: 162px;
+    font-size: 105px;
+  }
+  
+
+  
 }

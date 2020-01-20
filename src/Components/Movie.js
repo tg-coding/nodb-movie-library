@@ -66,9 +66,9 @@ class Movie extends Component {
                     <button onClick={this.toggleEdit} id="edit-btn" className="hvr-icon">&#9998;</button>
                     
                     {!this.state.toggleWatched ? (
-                        <button onClick={this.toggleWatched} className="toggle-watched">Not Watched &#9711;</button>
+                        <button onClick={this.toggleWatched} className="toggle-watched">Not Watched&ensp;&#9711;</button>
                     ) : (
-                        <button onClick={this.toggleWatched} className="toggle-watched">Watched &#9673;</button>
+                        <button onClick={this.toggleWatched} className="toggle-watched">Watched&ensp;&#9673;</button>
                     )}
                     
                 </div>
