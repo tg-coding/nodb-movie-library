@@ -1031,6 +1031,11 @@ h6{
     max-width: 1074px;
   }
 
+  .profile-and-search{
+    width: 320px;
+    margin: 0 37px;
+  }
+
   .movies-container{
     height: auto;
     max-width: 800px;
